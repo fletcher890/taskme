@@ -1,0 +1,12 @@
+{
+  "name": "application-name",
+  "jam": {
+    "packageDir": "public/javascripts/vendor",
+    "dependencies": {
+      "jquery": null,
+      "backbone": null,
+      "underscore": null,
+      "handlebars": null
+    }
+  }
+}

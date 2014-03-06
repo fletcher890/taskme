@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %title Task Manager
+    %link(rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
+    %link(rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
+    %link(rel="stylesheet" href="stylesheets/style.css")
+  %body
+    #wrapper
+      .container
+        %h1.page-header#overview Task Manager
+   
+        #content
+          =yield
+   
+      #footer
+        .container
+  
+  %script(src="javascripts/vendor/jquery/dist/jquery.js")
+  %script(src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
+  %script(src="javascripts/general/checkbox.js")
+  %script(type="text/javascript" src="javascripts/vendor/require.js" data-main="javascripts/main")
+  %script
+    require.config({ urlArgs: "v=" +  (new Date()).getTime() });

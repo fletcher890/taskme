@@ -1,0 +1,2 @@
+testem.framework: jasmine
+test_page: specRunner.html

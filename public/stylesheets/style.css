@@ -1,0 +1,52 @@
+/* CSS REQUIRED */
+.state-icon {
+    margin-right:5px;
+}
+.list-group-item-primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(66, 139, 202);
+}
+
+.well .list-group {
+    margin-bottom: 0px;
+}
+
+* {
+  border-radius: 0 !important;
+}
+
+.panel-heading {
+	border-bottom:none !important;
+}
+
+.panel {
+	box-shadow: none !important;
+	margin-bottom:0px !important;
+}
+
+.list-group-item:first-child {
+	border-top:none !important;
+}
+
+.e .panel-default {
+	border-bottom:none !important;
+}
+.e .list-group-item .commentWrapper {
+	display: none;
+	margin-top:20px;
+	margin-bottom: 20px;
+}
+
+.e .list-group-item .commentWrapper .comment {
+	max-height: 200px;
+	overflow: scroll;
+	margin-bottom:20px;
+}
+
+blockquote {
+	font-size:11.5px;
+}
+
+.list-group .glyphicon {
+	cursor: pointer;
+}
