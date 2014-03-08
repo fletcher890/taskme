@@ -4,8 +4,8 @@ require 'haml'
 require 'mongo'
 require 'json'
 
-DB = Mongo::Connection.new.db("sintra_development", :pool_size => 5, :timeout => 5)
-notes = DB.collection('notes')
+# DB = Mongo::Connection.new.db("sintra_development", :pool_size => 5, :timeout => 5)
+# notes = DB.collection('notes')
 
 get '/' do 
 	haml :index

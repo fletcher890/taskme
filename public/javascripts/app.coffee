@@ -1,7 +1,7 @@
-define ["jquery", "underscore", "backbone"], ($, _, Backbone) ->
+define ["jquery", "underscore", "backbone", "router"], ($, _, Backbone, Router) ->
   
   initialize = () ->
-  	console.log "in here"
+  	Router.initialize()
 
   model = ->
 

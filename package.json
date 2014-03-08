@@ -6,7 +6,8 @@
       "jquery": null,
       "backbone": null,
       "underscore": null,
-      "handlebars": null
+      "handlebars": null,
+      "sinon": null
     }
   }
 }

@@ -2017,6 +2017,11 @@ var jam = {
             "main": "dist/jquery.js"
         },
         {
+            "name": "sinon",
+            "location": "public/javascripts/vendor/sinon",
+            "main": "sinon.js"
+        },
+        {
             "name": "underscore",
             "location": "public/javascripts/vendor/underscore",
             "main": "underscore.js"
@@ -2033,6 +2038,9 @@ var jam = {
         },
         "handlebars": {
             "exports": "Handlebars"
+        },
+        "sinon": {
+            "exports": "sinon"
         },
         "underscore": {
             "exports": "_"
@@ -2059,6 +2067,11 @@ if (typeof require !== "undefined" && require.config) {
             "main": "dist/jquery.js"
         },
         {
+            "name": "sinon",
+            "location": "public/javascripts/vendor/sinon",
+            "main": "sinon.js"
+        },
+        {
             "name": "underscore",
             "location": "public/javascripts/vendor/underscore",
             "main": "underscore.js"
@@ -2074,6 +2087,9 @@ if (typeof require !== "undefined" && require.config) {
         },
         "handlebars": {
             "exports": "Handlebars"
+        },
+        "sinon": {
+            "exports": "sinon"
         },
         "underscore": {
             "exports": "_"
@@ -2100,6 +2116,11 @@ else {
             "main": "dist/jquery.js"
         },
         {
+            "name": "sinon",
+            "location": "public/javascripts/vendor/sinon",
+            "main": "sinon.js"
+        },
+        {
             "name": "underscore",
             "location": "public/javascripts/vendor/underscore",
             "main": "underscore.js"
@@ -2115,6 +2136,9 @@ else {
         },
         "handlebars": {
             "exports": "Handlebars"
+        },
+        "sinon": {
+            "exports": "sinon"
         },
         "underscore": {
             "exports": "_"
