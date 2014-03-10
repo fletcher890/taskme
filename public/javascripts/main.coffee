@@ -4,6 +4,7 @@ require.config
     underscore: "vendor/underscore/underscore"
     backbone: "vendor/backbone/backbone"
     handlebars: "vendor/handlebars/handlebars"
+    vent: "vent"
     
 require ["app", 'general/ux'], (App, Ux) ->
   

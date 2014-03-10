@@ -4,7 +4,9 @@
     var newTaskView;
     newTaskView = Backbone.View.extend({
       initialize: function() {
-        return console.log(" in here");
+        if (!this.model.isNew()) {
+          return this.model.fetch();
+        }
       },
       events: {
         'submit': 'saveProject'
@@ -16,7 +18,14 @@
         return this;
       },
       saveProject: function(e) {
-        return e.preventDefault();
+        e.preventDefault();
+        this.model.set({
+          name: this.$("#name").val()
+        });
+        this.model.set({
+          comment: this.$("#comment").val()
+        });
+        return this.model.save();
       }
     });
     return newTaskView;

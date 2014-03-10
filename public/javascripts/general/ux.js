@@ -2,7 +2,7 @@
 (function() {
   $(document).ready(function() {
     var toggleComments;
-    $(".list-group .glyphicon#controls").on("click", function() {
+    $("body").on("click", '.list-group .glyphicon.controls', function() {
       return toggleComments($(this));
     });
     return toggleComments = function(obj) {

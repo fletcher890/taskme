@@ -1,0 +1,22 @@
+{{name}}
+{{#if comment}}
+	<span class="glyphicon glyphicon-plus controls pull-right"></span>
+	<div class="commentWrapper">
+		<div class="comment">
+			<blockquote>
+              <p>
+                {{comment}}
+              </p>
+              <footer>
+                created by
+                <cite>John Doe</cite>
+              </footer>
+            </blockquote>
+		</div>
+		<hr />
+        <div class="form-group">
+        	<textarea class="form-control" name="description" placeholder="Comment..." rows="3" value=""></textarea>
+		</div>
+		<input class="btn btn-lg btn-success btn-block btn-sm" type="submit" value="Add Comment" /></div>
+	</div>
+{{/if}}

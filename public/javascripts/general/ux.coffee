@@ -1,6 +1,6 @@
 $(document).ready ->
 	
-	$(".list-group .glyphicon#controls").on "click", ->
+	$("body").on "click", '.list-group .glyphicon.controls', ->
 
 		toggleComments($(@))
 

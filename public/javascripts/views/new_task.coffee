@@ -7,7 +7,7 @@ define [
 
 	newTaskView = Backbone.View.extend({
 		initialize: ->
-			console.log " in here"
+			@model.fetch() unless @model.isNew()
 
 		events: 
 			'submit': 'saveProject'
@@ -19,6 +19,9 @@ define [
 
 		saveProject: (e) ->
 			e.preventDefault()
+			@model.set name: @$("#name").val()
+			@model.set comment: @$("#comment").val()
+			@model.save()
 
 	});
 

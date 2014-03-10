@@ -5,7 +5,8 @@ define [
   "backbone"
   "views/header"
   "views/content"
-], ($, _, Backbone, Header, Content) ->
+  "models/task"
+], ($, _, Backbone, HeaderView, ContentView, TaskModel) ->
 
 	AppRouter = Backbone.Router.extend(routes:
 		"": "index"
@@ -14,8 +15,8 @@ define [
 
 	initialize = ->
     router = new AppRouter()
-    @headerView = new Header()
-    @contentView = new Content()
+    @headerView = new HeaderView()
+    @contentView = new ContentView()
     @layoutViews()
 
     router.on "route:optimize", ->
@@ -26,8 +27,9 @@ define [
       return
 
     router.on "route:index", =>
-      require ["views/new_task"], (NewTask) =>
-        @contentView.swapSide(new NewTask())
+      require ["views/new_task", "views/tasks", "collections/tasks"], (NewTaskView, TasksView, TasksCollection) =>
+        @contentView.swapSide(new NewTaskView({ model: new TaskModel }))
+        @contentView.swapMain(new TasksView({ collection: new TasksCollection }))
 
     router.on "route:defaultAction", (actions) ->
       console.log "There is no action for: - " + actions
