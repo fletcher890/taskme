@@ -13,6 +13,9 @@ define [
 			errors = {}
 			unless attrs.name
 				errors.name = ["Can't be blank"]
+			unless attrs.importance 
+				errors.importance = ["Can't be blank"]
+				
 			errors unless _.isEmpty errors
 	});
 

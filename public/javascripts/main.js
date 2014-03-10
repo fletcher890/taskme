@@ -7,6 +7,7 @@
       backbone: "vendor/backbone/backbone",
       handlebars: "vendor/handlebars/handlebars",
       vent: "vent"
+      mixins: "vent"
     }
   });
 

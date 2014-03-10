@@ -2,8 +2,9 @@ define [
   "jquery"
   "underscore"
   "backbone"
+  "validatable"
   "text!templates/tasks/new_task.html"
-], ($, _, Backbone, newTaskTemplate) ->
+], ($, _, Backbone, Validatable, newTaskTemplate) ->
 
 	newTaskView = Backbone.View.extend({
 		initialize: ->
@@ -26,4 +27,5 @@ define [
 
 	});
 
+	_.extend newTaskView.prototype, Validatable
 	return newTaskView
