@@ -36,8 +36,9 @@ end
 
 post '/tasks/?' do
 	content_type :json
-  	new_id = settings.mongo_db['tasks'].insert JSON.parse(request.body.read)
-  	task_by_id(new_id).to_json
+  data = JSON.parse(request.body.read)
+  new_id = settings.mongo_db['tasks'].insert( { name: data['name'], importance: data['importance'], comments: [{comment: data['comment'], created_at: Time.now.strftime("%d/%m/%Y %H:%M"), by: 'John Doe'}] } )
+  task_by_id(new_id).to_json
 end
 
 get '/tasks/?' do

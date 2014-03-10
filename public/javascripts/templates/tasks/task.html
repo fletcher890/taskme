@@ -1,17 +1,16 @@
 {{name}}
-{{#if comment}}
+{{#if comments}}
 	<span class="glyphicon glyphicon-plus controls pull-right"></span>
 	<div class="commentWrapper">
 		<div class="comment">
+      {{#each comments}}
 			<blockquote>
-              <p>
-                {{comment}}
-              </p>
-              <footer>
-                created by
-                <cite>John Doe</cite>
-              </footer>
-            </blockquote>
+        <p>
+          {{this.comment}}
+        </p>
+        <footer>created by<cite>{{this.by}}</cite> at <cite>{{this.created_at}}</cite></footer>
+      </blockquote>
+      {{/each}}
 		</div>
 		<hr />
         <div class="form-group">

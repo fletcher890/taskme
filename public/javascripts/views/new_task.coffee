@@ -21,6 +21,7 @@ define [
 			e.preventDefault()
 			@model.set name: @$("#name").val()
 			@model.set comment: @$("#comment").val()
+			@model.set importance: @$("#importance").val()
 			@model.save()
 
 	});

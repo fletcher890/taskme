@@ -25,6 +25,9 @@
         this.model.set({
           comment: this.$("#comment").val()
         });
+        this.model.set({
+          importance: this.$("#importance").val()
+        });
         return this.model.save();
       }
     });
