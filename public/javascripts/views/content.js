@@ -3,9 +3,7 @@
   define(["jquery", "underscore", "backbone", "vent", "text!templates/content/content.html"], function($, _, Backbone, Vent, contentTemplate) {
     var contentView;
     contentView = Backbone.View.extend({
-      initialize: function() {
-        return this.listenTo(Vent, "app.event", this.console);
-      },
+      initialize: function() {},
       swapMain: function(view) {
         this.changeCurrentMainView(view);
         return this.$('#main-area').html(this.currentMainView.render().el);
@@ -33,9 +31,6 @@
         });
         this.$el.html(compiledTemplate);
         return this;
-      },
-      console: function() {
-        return console.log('triggered');
       }
     });
     return contentView;

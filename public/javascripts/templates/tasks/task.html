@@ -1,21 +1,22 @@
+<span class="importanceLevel pull-left {{importance}}"></span>
 {{name}}
-{{#if comments}}
-	<span class="glyphicon glyphicon-plus controls pull-right"></span>
+	<span class="glyphicon glyphicon-plus controls pull-right"></span>&nbsp;<span class="badge badge-success pull-right">{{comments.length}}</span>
 	<div class="commentWrapper">
+	{{#if comments}}
 		<div class="comment">
       {{#each comments}}
 			<blockquote>
         <p>
           {{this.comment}}
         </p>
-        <footer>created by<cite>{{this.by}}</cite> at <cite>{{this.created_at}}</cite></footer>
+        <footer>created by<cite>{{this.by}}</cite> at <cite>{{prettifyDate this.created_at}}</cite></footer>
       </blockquote>
       {{/each}}
 		</div>
+	{{/if}}
 		<hr />
         <div class="form-group">
-        	<textarea class="form-control" name="description" placeholder="Comment..." rows="3" value=""></textarea>
+        	<textarea class="form-control commentTextarea" name="description" placeholder="Comment..." rows="3" value=""></textarea>
 		</div>
-		<input class="btn btn-lg btn-success btn-block btn-sm" type="submit" value="Add Comment" /></div>
+		<input class="btn btn-lg btn-success btn-block btn-sm commentAdd" type="submit" value="Add Comment" /></div>
 	</div>
-{{/if}}

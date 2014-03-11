@@ -9,7 +9,6 @@ define [
 	contentView = Backbone.View.extend({
 
 		initialize: ->
-			@listenTo Vent, "app.event", @console
 
 		swapMain: (view) ->
 			@changeCurrentMainView(view)
@@ -31,9 +30,6 @@ define [
 			compiledTemplate = _.template( contentTemplate, {title: 'content area'} )
 			@$el.html(compiledTemplate)
 			@
-
-		console: ->
-			console.log 'triggered'
 
 	});
 

@@ -5,10 +5,36 @@
     task = Backbone.View.extend({
       tagName: 'li',
       className: 'list-group-item',
+      events: {
+        'click .btn.commentAdd': 'addComment'
+      },
       template: Handlebars.compile(taskTemplate),
       render: function() {
         this.$el.html(this.template(this.model.toJSON()));
         return this;
+      },
+      addComment: function(e) {
+        var comments;
+        e.preventDefault();
+        comments = this.model.get('comments');
+        comments.push({
+          comment: $(e.currentTarget).parent().find('.commentTextarea').val(),
+          by: 'John Doe',
+          created_at: new Date()
+        });
+        this.model.set({
+          comments: comments
+        });
+        this.model.set({
+          id: this.model.get('_id').$oid
+        });
+        return this.model.save({
+          wait: true
+        }, {
+          success: function() {
+            return $(e.currentTarget).parent().find('.commentTextarea').val('');
+          }
+        });
       }
     });
     return task;

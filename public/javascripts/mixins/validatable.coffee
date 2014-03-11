@@ -11,7 +11,7 @@ define [
 		renderError: (errors, attribute) ->
 			err = errors.join "; "
 			@$("#" + attribute).closest("div.form-group").addClass('has-error')
-			@$("#" + attribute).closest("div.controls").append('<span class="help-block">' + err + '</span>')
+			@$("#" + attribute).closest("div.form-group").append('<span class="help-block">' + err + '</span>')
 
 		parseErrorResponse: (model, response) ->
 			if response and response.status is 403

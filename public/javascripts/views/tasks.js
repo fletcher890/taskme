@@ -6,6 +6,7 @@
       initialize: function() {
         this.childViews = [];
         this.listenTo(this.collection, "reset", this.render);
+        this.listenTo(Vent, "task:create", this.renderNewTask);
         return this.collection.fetch({
           reset: true
         });
@@ -14,11 +15,16 @@
         var compiledTemplate;
         compiledTemplate = _.template(tasksTemplate);
         this.$el.html(compiledTemplate);
-        this.collection.forEach(this.renderProject, this);
+        this.collection.forEach(this.renderTask, this);
         Vent.trigger('app.event');
         return this;
       },
-      renderProject: function(model) {
+      renderNewTask: function(model) {
+        this.model = model;
+        this.collection.add(model);
+        return this.renderTask(model);
+      },
+      renderTask: function(model) {
         var view;
         view = new TaskView({
           model: model

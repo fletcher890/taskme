@@ -11,6 +11,9 @@
         if (!attrs.name) {
           errors.name = ["Can't be blank"];
         }
+        if (!attrs.importance) {
+          errors.importance = ["Can't be blank"];
+        }
         if (!_.isEmpty(errors)) {
           return errors;
         }

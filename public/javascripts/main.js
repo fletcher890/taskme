@@ -6,12 +6,12 @@
       underscore: "vendor/underscore/underscore",
       backbone: "vendor/backbone/backbone",
       handlebars: "vendor/handlebars/handlebars",
-      vent: "vent"
-      mixins: "vent"
+      vent: "vent",
+      validatable: "mixins/validatable"
     }
   });
 
-  require(["app", 'general/ux'], function(App, Ux) {
+  require(["app", 'general/ux', 'helpers/handlebars-helper'], function(App, Ux, handlebarsHelper) {
     App.initialize();
   });
 

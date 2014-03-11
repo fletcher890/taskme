@@ -15,6 +15,37 @@
   border-radius: 0 !important;
 }
 
+.badge {
+	border-radius:10px !important;
+	margin-right:10px;
+}
+
+.importanceLevel {
+	display: inline-block;
+	border-radius:10px !important;
+	height:10px;
+	width:10px;
+	margin-right:10px;
+	background-color: #5CB85C;
+	margin-top:5px;
+}
+
+.importanceLevel.H {
+	background-color: #D9534F;
+}
+
+.importanceLevel.A {
+	background-color: #ffffff;
+}
+
+.importanceLevel.L {
+	background-color: #5BC0DE;
+}
+
+.badge-success {
+  /*background-color: #5CB85C;*/
+}
+
 .panel-heading {
 	border-bottom:none !important;
 }
@@ -49,4 +80,12 @@ blockquote {
 
 .list-group .glyphicon {
 	cursor: pointer;
+}
+
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline {
+	color: #F04124;
+}
+
+.has-error .form-control {
+	border-color: #F04124;
 }
