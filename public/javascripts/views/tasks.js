@@ -6,6 +6,7 @@
       initialize: function() {
         this.childViews = [];
         this.listenTo(this.collection, "reset", this.render);
+        this.listenTo(this.collection, "add", this.render);
         this.listenTo(Vent, "task:create", this.renderNewTask);
         return this.collection.fetch({
           reset: true
@@ -13,6 +14,7 @@
       },
       render: function() {
         var compiledTemplate;
+        console.log(" in here");
         compiledTemplate = _.template(tasksTemplate);
         this.$el.html(compiledTemplate);
         this.collection.forEach(this.renderTask, this);
@@ -20,9 +22,8 @@
         return this;
       },
       renderNewTask: function(model) {
-        this.model = model;
-        this.collection.add(model);
-        return this.renderTask(model);
+        console.log(model);
+        return this.collection.add(model);
       },
       renderTask: function(model) {
         var view;

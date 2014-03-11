@@ -43,3 +43,12 @@ define [
 		curr_mins  = date.getMinutes()
 		curr_hours  = date.getHours()
 		date = curr_date + "/" + curr_month  + "/" + curr_year + ' ' + curr_hours + ':' + curr_mins
+
+	Handlebars.registerHelper "importanceClass", (importance) ->
+		switch importance
+			when '1'
+				return 'H'
+			when '2'
+				return 'A'
+			when '3'
+				return 'L'

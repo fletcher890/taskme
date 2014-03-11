@@ -4,7 +4,10 @@
     var tasks;
     tasks = Backbone.Collection.extend({
       model: Task,
-      url: "/tasks"
+      url: "/tasks",
+      comparator: function(option) {
+        return option.get('importance');
+      }
     });
     return tasks;
   });

@@ -28,7 +28,6 @@ define [
 			comments = @model.get('comments');
 			comments.push({comment: $(e.currentTarget).parent().find('.commentTextarea').val(), by: 'John Doe', created_at: new Date() });
 			@model.set comments: comments 
-			@model.set id: @model.get('_id').$oid 
 			@model.save {wait: true},
 				success: ->
 					$(e.currentTarget).parent().find('.commentTextarea').val('')

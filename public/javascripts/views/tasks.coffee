@@ -12,11 +12,13 @@ define [
 		initialize: ->
 			@childViews = []
 			@listenTo @collection, "reset", @render
+			@listenTo @collection, "add", @render
 			@listenTo Vent, "task:create", @renderNewTask
 			@collection.fetch({ reset: true })
 			
 
 		render: ->
+			console.log " in here"
 			compiledTemplate = _.template( tasksTemplate )
 			@$el.html(compiledTemplate)
 			@collection.forEach @renderTask, @
@@ -24,9 +26,8 @@ define [
 			@
 
 		renderNewTask: (model) ->
-			@model = model
+			console.log 	
 			@collection.add model
-			@renderTask(model)
 
 		renderTask: (model) ->
 			view = new TaskView({ model: model })

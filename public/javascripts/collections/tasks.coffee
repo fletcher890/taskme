@@ -10,6 +10,8 @@ define [
 		model: Task
 		url: "/tasks"
 
+		comparator: (option) ->
+			return option.get('importance')
 		
 	});
 

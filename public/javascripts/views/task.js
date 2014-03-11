@@ -25,9 +25,6 @@
         this.model.set({
           comments: comments
         });
-        this.model.set({
-          id: this.model.get('_id').$oid
-        });
         return this.model.save({
           wait: true
         }, {

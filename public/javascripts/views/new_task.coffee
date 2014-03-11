@@ -32,8 +32,13 @@ define [
 
 			@model.set importance: @$("#importance").val()
 			@model.save {wait: true},
-				success: (model, data) ->
+				success: (model, data) =>
 					Vent.trigger "task:create", model
+					@clearForm()
+
+		clearForm: ->
+			@clearErrors()
+			delete @model.id
 
 	});
 

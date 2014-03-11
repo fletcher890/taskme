@@ -68,7 +68,7 @@
           return options.inverse(this);
       }
     });
-    return Handlebars.registerHelper("prettifyDate", function(timestamp) {
+    Handlebars.registerHelper("prettifyDate", function(timestamp) {
       var curr_date, curr_hours, curr_mins, curr_month, curr_year, date;
       date = new Date(timestamp);
       curr_year = date.getFullYear();
@@ -77,6 +77,16 @@
       curr_mins = date.getMinutes();
       curr_hours = date.getHours();
       return date = curr_date + "/" + curr_month + "/" + curr_year + ' ' + curr_hours + ':' + curr_mins;
+    });
+    return Handlebars.registerHelper("importanceClass", function(importance) {
+      switch (importance) {
+        case '1':
+          return 'H';
+        case '2':
+          return 'A';
+        case '3':
+          return 'L';
+      }
     });
   });
 

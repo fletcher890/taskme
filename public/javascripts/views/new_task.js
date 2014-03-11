@@ -46,10 +46,17 @@
         return this.model.save({
           wait: true
         }, {
-          success: function(model, data) {
-            return Vent.trigger("task:create", model);
-          }
+          success: (function(_this) {
+            return function(model, data) {
+              Vent.trigger("task:create", model);
+              return _this.clearForm();
+            };
+          })(this)
         });
+      },
+      clearForm: function() {
+        this.clearErrors();
+        return delete this.model.id;
       }
     });
     _.extend(newTaskView.prototype, Validatable);
