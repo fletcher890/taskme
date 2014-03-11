@@ -56,7 +56,8 @@
       },
       clearForm: function() {
         this.clearErrors();
-        return delete this.model.id;
+        delete this.model.id;
+        return this.model.reset({});
       }
     });
     _.extend(newTaskView.prototype, Validatable);

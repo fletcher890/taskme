@@ -7,7 +7,20 @@ define [
 	task = Backbone.Model.extend({
 		urlRoot: "/tasks"
 
+		parse: (response) ->
+			if typeof response is 'object'
+				response.id = response._id.$oid
+			else
+				response = JSON.parse(response)
+				console.log response
+				response.id = response._id.$oid
+			response
+
+		defaults: {
+		}
+
 		initialize: ->
+			@.cid = _.uniqueId('c')
 
 		validate: (attrs, options) ->
 			errors = {}
@@ -17,6 +30,10 @@ define [
 				errors.importance = ["Can't be blank"]
 				
 			errors unless _.isEmpty errors
+
+		reset: (opt) ->
+		  @.clear(opt);
+		  @.set(@.defaults);
 	});
 
 	return task

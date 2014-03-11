@@ -39,6 +39,7 @@ define [
 		clearForm: ->
 			@clearErrors()
 			delete @model.id
+			@model.reset({})
 
 	});
 

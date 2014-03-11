@@ -78,7 +78,7 @@
       curr_hours = date.getHours();
       return date = curr_date + "/" + curr_month + "/" + curr_year + ' ' + curr_hours + ':' + curr_mins;
     });
-    return Handlebars.registerHelper("importanceClass", function(importance) {
+    Handlebars.registerHelper("importanceClass", function(importance) {
       switch (importance) {
         case '1':
           return 'H';
@@ -87,6 +87,9 @@
         case '3':
           return 'L';
       }
+    });
+    return Handlebars.registerHelper("log", function(context) {
+      return console.log(context);
     });
   });
 

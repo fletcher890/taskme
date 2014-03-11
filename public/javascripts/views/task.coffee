@@ -3,11 +3,15 @@ define [
   "underscore"
   "backbone"
   "vent"
+  "views/comment"
+  "collections/tasks"
   "text!templates/tasks/task.html"
   "handlebars"
-], ($, _, Backbone, Vent, taskTemplate) ->
+], ($, _, Backbone, Vent, CommentView, taskCollection, taskTemplate, Handlebars) ->
 
 	task = Backbone.View.extend({
+
+		initialize: ->
 
 		tagName: 'li'
 		className: 'list-group-item'
@@ -26,12 +30,15 @@ define [
 		addComment: (e) ->
 			e.preventDefault()
 			comments = @model.get('comments');
-			comments.push({comment: $(e.currentTarget).parent().find('.commentTextarea').val(), by: 'John Doe', created_at: new Date() });
+			comment = {comment: $(e.currentTarget).parent().find('.commentTextarea').val(), by: 'John Doe', created_at: new Date() }
+			comments.push(comment);
 			@model.set comments: comments 
 			@model.save {wait: true},
-				success: ->
+				success: (model) =>
 					$(e.currentTarget).parent().find('.commentTextarea').val('')
-
+					comm = new CommentView({ comment: comment })
+					@$el.find('.commentWrapper .comment').append(comm.render().el)
+					@$el.find('span.badge').text(@model.get('comments').length)
 	});
 
 	return task

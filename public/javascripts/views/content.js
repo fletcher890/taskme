@@ -31,6 +31,9 @@
         });
         this.$el.html(compiledTemplate);
         return this;
+      },
+      getImportances: function() {
+        return _.uniq(this.collection.pluck("importance"));
       }
     });
     return contentView;

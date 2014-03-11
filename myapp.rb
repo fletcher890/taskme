@@ -7,6 +7,17 @@ require 'json/ext'
 
 include Mongo
 
+module Mongoid
+  module Document
+    def as_json(options={})
+      attrs = super(options)
+      attrs["id"] = self.persisted? ? self._id : nil
+      attrs
+    end
+  end
+end
+
+
 configure do
   conn = MongoClient.new("localhost", 27017)
   set :mongo_connection, conn
@@ -53,9 +64,9 @@ end
 
 put '/tasks/:id/?' do
   content_type :json
+  data = JSON.parse(request.body.read)
   id = object_id(params[:id])
-  abort params.inspect
-  # settings.mongo_db['tasks'].update(:_id => id, params)
+  settings.mongo_db['tasks'].save({_id: id, :name => data['name'], :importance => data['importance'], :comments => data['comments'] })
   task_by_id(id).to_json
 end
 

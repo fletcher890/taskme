@@ -4,7 +4,20 @@
     var task;
     task = Backbone.Model.extend({
       urlRoot: "/tasks",
-      initialize: function() {},
+      parse: function(response) {
+        if (typeof response === 'object') {
+          response.id = response._id.$oid;
+        } else {
+          response = JSON.parse(response);
+          console.log(response);
+          response.id = response._id.$oid;
+        }
+        return response;
+      },
+      defaults: {},
+      initialize: function() {
+        return this.cid = _.uniqueId('c');
+      },
       validate: function(attrs, options) {
         var errors;
         errors = {};
@@ -17,6 +30,10 @@
         if (!_.isEmpty(errors)) {
           return errors;
         }
+      },
+      reset: function(opt) {
+        this.clear(opt);
+        return this.set(this.defaults);
       }
     });
     return task;

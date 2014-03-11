@@ -52,3 +52,6 @@ define [
 				return 'A'
 			when '3'
 				return 'L'
+
+	Handlebars.registerHelper "log", (context) ->
+  		return console.log(context);

@@ -31,6 +31,9 @@ define [
 			@$el.html(compiledTemplate)
 			@
 
+		getImportances: ->
+            return _.uniq(this.collection.pluck("importance"));
+
 	});
 
 	return contentView
