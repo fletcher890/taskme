@@ -3,12 +3,14 @@ define [
   "underscore"
   "backbone"
   "vent"
+  "views/new_task"
   "text!templates/content/content.html"
-], ($, _, Backbone, Vent, contentTemplate) ->
+], ($, _, Backbone, Vent, NewTaskView, contentTemplate) ->
 
 	contentView = Backbone.View.extend({
 
 		initialize: ->
+			@listenTo Vent, "task:edit", @editTask
 
 		swapMain: (view) ->
 			@changeCurrentMainView(view)
@@ -23,7 +25,7 @@ define [
 			@$('#sidebar').html(@currentSideView.render().el)
 
 		changeCurrentSideView: (view) ->
-			@currentSideView.leave() if @currentSideView
+			@currentSideView.remove() if @currentSideView
 			@currentSideView = view
 
 		render: ->
@@ -31,8 +33,11 @@ define [
 			@$el.html(compiledTemplate)
 			@
 
-		getImportances: ->
-            return _.uniq(this.collection.pluck("importance"));
+		editTask: (model) ->
+			@swapSide(new NewTaskView({ model: model }))
+			console.log model
+			console.log "in here"
+
 
 	});
 

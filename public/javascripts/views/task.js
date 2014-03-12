@@ -7,7 +7,9 @@
       tagName: 'li',
       className: 'list-group-item',
       events: {
-        'click .btn.commentAdd': 'addComment'
+        'click .btn.commentAdd': 'addComment',
+        'click .btn.editTask': 'editTask',
+        'click .btn.archiveTask': 'archiveTask'
       },
       template: Handlebars.compile(taskTemplate),
       render: function() {
@@ -42,6 +44,14 @@
             };
           })(this)
         });
+      },
+      archiveTask: function() {
+        console.log("archive task");
+        this.$el.find('.commentWrapper').slideUp();
+        return this.$el.find('.commentWrapper').parent().fadeOut();
+      },
+      editTask: function() {
+        return Vent.trigger("task:edit", this.model);
       }
     });
     return task;

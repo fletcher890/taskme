@@ -18,6 +18,7 @@ define [
 			'submit': 'saveProject'
 
 		render: ->
+			# Add the model into here and add the data into the template
 			compiledTemplate = _.template( newTaskTemplate)
 			@$el.html(compiledTemplate)
 			@

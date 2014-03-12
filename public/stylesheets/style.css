@@ -35,7 +35,7 @@
 }
 
 .importanceLevel.A {
-	background-color: #ffffff;
+	background-color: #F0AD4E;
 }
 
 .importanceLevel.L {
@@ -88,4 +88,12 @@ blockquote {
 
 .has-error .form-control {
 	border-color: #F04124;
+}
+
+.dropdown-menu > li > a {
+	padding:3px 25px 3px 10px;
+}
+
+.e {
+	min-height: 325px;
 }

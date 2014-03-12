@@ -17,7 +17,9 @@ define [
 		className: 'list-group-item'
 
 		events: {
-			'click .btn.commentAdd': 'addComment'
+			'click .btn.commentAdd': 'addComment',
+			'click .btn.editTask': 'editTask'
+			'click .btn.archiveTask': 'archiveTask'
 		}
 
 		template: Handlebars.compile(taskTemplate)
@@ -39,6 +41,15 @@ define [
 					comm = new CommentView({ comment: comment })
 					@$el.find('.commentWrapper .comment').append(comm.render().el)
 					@$el.find('span.badge').text(@model.get('comments').length)
+
+		archiveTask: ->
+			console.log "archive task"
+			@$el.find('.commentWrapper').slideUp()
+			@$el.find('.commentWrapper').parent().fadeOut()
+
+		editTask: ->
+			Vent.trigger "task:edit", @model
+
 	});
 
 	return task
