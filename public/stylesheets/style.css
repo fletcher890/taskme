@@ -70,7 +70,7 @@
 
 .e .list-group-item .commentWrapper .comment {
 	max-height: 200px;
-	overflow: scroll;
+	overflow: auto;
 	margin-bottom:20px;
 }
 
