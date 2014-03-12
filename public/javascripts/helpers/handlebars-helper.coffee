@@ -57,6 +57,6 @@ define [
   		return console.log(context);
 
   	Handlebars.registerHelper "select", (value, options) ->
-		$el = $("<select />").html(options.fn(this))
+		$el = $("<select class='form-control' name='importance' id='importance' />").html(options.fn(this))
 		$el.find("[value='" + value + "']").attr selected: "selected"
 		$el.html()
