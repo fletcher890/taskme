@@ -5,9 +5,12 @@ define [
   "vent"
   "views/new_task"
   "text!templates/content/content.html"
-], ($, _, Backbone, Vent, NewTaskView, contentTemplate) ->
+  "handlebars"
+], ($, _, Backbone, Vent, NewTaskView, contentTemplate, Handlebars) ->
 
 	contentView = Backbone.View.extend({
+
+		template: Handlebars.compile(contentTemplate)
 
 		initialize: ->
 			@listenTo Vent, "task:edit", @editTask
@@ -29,8 +32,7 @@ define [
 			@currentSideView = view
 
 		render: ->
-			compiledTemplate = _.template( contentTemplate, {title: 'content area'} )
-			@$el.html(compiledTemplate)
+			@$el.html(@template({title: 'content area'}))
 			@
 
 		editTask: (model) ->

@@ -6,9 +6,12 @@ define [
   "views/task"
   "text!templates/tasks/tasks.html"
   "text!templates/partials/filter_dropdown.html"
-], ($, _, Backbone, Vent, TaskView, tasksTemplate, filterTemplate) ->
+  "handlebars"
+], ($, _, Backbone, Vent, TaskView, tasksTemplate, filterTemplate, Handlebars) ->
 
 	tasks = Backbone.View.extend({
+
+		template: Handlebars.compile(tasksTemplate)
 
 		initialize: ->
 			@childViews = []
@@ -20,7 +23,7 @@ define [
 
 		render: ->
 			
-			@$el.html(_.template( tasksTemplate ))
+			@$el.html(@template())
 			@$el.find("#filterablearea").append(@createImportanceSelect()); 
 			
 			@collection.forEach @renderTask, @

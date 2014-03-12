@@ -5,7 +5,8 @@ define [
   "vent"
   "validatable"
   "text!templates/tasks/new_task.html"
-], ($, _, Backbone, Vent, Validatable, newTaskTemplate) ->
+  "handlebars"
+], ($, _, Backbone, Vent, Validatable, newTaskTemplate, Handlebars) ->
 
 	newTaskView = Backbone.View.extend({
 		initialize: ->
@@ -14,13 +15,13 @@ define [
 			@listenTo @model, 'sync', @render
 			@model.fetch() unless @model.isNew()
 
+		template: Handlebars.compile(newTaskTemplate)
+
 		events: 
 			'submit': 'saveProject'
 
 		render: ->
-			# Add the model into here and add the data into the template
-			compiledTemplate = _.template( newTaskTemplate)
-			@$el.html(compiledTemplate)
+			@$el.html(@template(@model.toJSON()))
 			@
 
 		saveProject: (e) ->

@@ -3,13 +3,15 @@ define [
   "underscore"
   "backbone"
   "text!templates/header/header.html"
-], ($, _, Backbone, headerTemplate) ->
+  "handlebars"
+], ($, _, Backbone, headerTemplate, Handlebars) ->
 
 	headerView = Backbone.View.extend({
 		
+		template: Handlebars.compile(headerTemplate)
+
 		render: ->
-			compiledTemplate = _.template( headerTemplate, { title: 'Taskme' } );
-			@$el.html(compiledTemplate)
+			@$el.html(@template(@model.toJSON()))
 			@
 
 	});
