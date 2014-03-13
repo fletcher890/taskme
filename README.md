@@ -4,12 +4,15 @@ This is a simple task tracking app built again built from the group up with Test
 
 * Backbone
 * Sinatra
-* Jasmine 
 * Require
+
+Testing:
+
+* Jasmine 
+* Sinon 
 * Testem
 
 Templating/Sugar:
 
-* Haml 
 * Handlebars
 * CoffeeScript 
