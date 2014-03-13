@@ -27,8 +27,6 @@ define [
 		saveProject: (e) ->
 			e.preventDefault()
 			@model.set name: @$("#name").val()
-			console.log @model.get('id')
-			console.log '123213'
 
 			if typeof @model.get('id') is 'undefined'				
 

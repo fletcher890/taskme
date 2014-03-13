@@ -48,13 +48,18 @@ end
 post '/tasks/?' do
 	content_type :json
   data = JSON.parse(request.body.read)
-  new_id = settings.mongo_db['tasks'].insert( { name: data['name'], importance: data['importance'], comments: data['comments'], archive: false } )
+  new_id = settings.mongo_db['tasks'].insert( { name: data['name'], importance: data['importance'],  archive: false, comments: data['comments']} )
   task_by_id(new_id).to_json
 end
 
 get '/tasks/?' do
   content_type :json
-  settings.mongo_db['tasks'].find.to_a.to_json
+  settings.mongo_db['tasks'].find({ archive: false }).to_a.to_json
+end
+
+get '/tasks/archive/?' do 
+  content_type :json
+  settings.mongo_db['tasks'].find({ archive: true }).to_a.to_json
 end
 
 get '/tasks/:id/?' do
@@ -66,7 +71,7 @@ put '/tasks/:id/?' do
   content_type :json
   data = JSON.parse(request.body.read)
   id = object_id(params[:id])
-  settings.mongo_db['tasks'].save({_id: id, :name => data['name'], :importance => data['importance'], :comments => data['comments'] })
+  settings.mongo_db['tasks'].save({_id: id, :name => data['name'], :importance => data['importance'], :archive => data['archive'], :comments => data['comments'] })
   task_by_id(id).to_json
 end
 

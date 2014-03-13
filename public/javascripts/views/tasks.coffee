@@ -12,18 +12,23 @@ define [
 	tasks = Backbone.View.extend({
 
 		template: Handlebars.compile(tasksTemplate)
+		events: {
+			"click #filterablearea a": "setFilter",
+		}
 
 		initialize: ->
 			@childViews = []
 			@listenTo @collection, "reset", @render
+			@listenTo @collection, "reset", @render
 			@listenTo Vent, "task:create", @renderNewTask
 			@listenTo Vent, "collection:add", @render
-			@collection.fetch({ reset: true })
+			@on "change:filterValue", @filterByImportance, @
+			@collection.fetch({ reset: true }) 
 		
 
 		render: ->
 			
-			@$el.html(@template())
+			@$el.html(@template({collection: @collection}))
 			@$el.find("#filterablearea").append(@createImportanceSelect()); 
 			
 			@collection.forEach @renderTask, @
@@ -39,7 +44,30 @@ define [
 			@childViews.push(view)
 			@$('#taskList').append(view.render().el)
 
-		getImportances: ->
+		setFilter: (e) ->
+			e.preventDefault()
+			@filterValue = $(e.currentTarget).attr "data-ref"
+			@trigger "change:filterValue"
+
+		filterByImportance: ->
+			if @filterValue is 'tasks-live'
+
+				@collection.fetch({
+					success: (collection) => 
+						console.log "in here"
+						@render()
+				})
+
+			else if @filterValue is 'tasks-archive'
+
+				@collection.fetch( { 
+					url: '/tasks/archive'
+					success: (collection) => 
+						@render()
+				})
+
+			else
+				console.log "in herer"
 
 		createImportanceSelect: -> 
 			$(filterTemplate)
