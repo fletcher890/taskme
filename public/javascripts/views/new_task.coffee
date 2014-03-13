@@ -27,12 +27,15 @@ define [
 		saveProject: (e) ->
 			e.preventDefault()
 			@model.set name: @$("#name").val()
-			console.log @$("#importance").val()
-			
-			if @$("#comment").val() == ''
-				@model.set comments: []
-			else
-				@model.set comments: [{comment: @$("#comment").val(), by: 'John Doe', created_at: new Date() }]
+			console.log @model.get('id')
+			console.log '123213'
+
+			if typeof @model.get('id') is 'undefined'				
+
+				if @$("#comment").val() == ''
+					@model.set comments: []
+				else
+					@model.set comments: [{comment: @$("#comment").val(), by: 'John Doe', created_at: new Date() }]
 
 			@model.set importance: @$("#importance").val()
 			@model.save null,

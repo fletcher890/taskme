@@ -5,7 +5,7 @@ define [
   "vent"
   "views/comment"
   "collections/tasks"
-  "text!templates/tasks/task.haml"
+  "text!templates/tasks/task.hbs"
   "handlebars"
 ], ($, _, Backbone, Vent, CommentView, taskCollection, taskTemplate, Handlebars) ->
 
@@ -20,6 +20,7 @@ define [
 			'click .btn.commentAdd': 'addComment',
 			'click .btn.editTask': 'editTask'
 			'click .btn.archiveTask': 'archiveTask'
+			'click .btn.removeTask': 'removeTask'
 		}
 
 		template: Handlebars.compile(taskTemplate)
@@ -42,13 +43,28 @@ define [
 					@$el.find('.commentWrapper .comment').append(comm.render().el)
 					@$el.find('span.badge').text(@model.get('comments').length)
 
-		archiveTask: ->
-			console.log "archive task"
-			@$el.find('.commentWrapper').slideUp()
-			@$el.find('.commentWrapper').parent().fadeOut()
+		archiveTask: (e) ->
+			e.preventDefault()
+			@model.set archive: true
+			@model.save {wait: true},
+				success: (model) =>
+					@closeUpOption()
+
+		removeTask: (e) ->
+			e.preventDefault()
+			return unless confirm("Are you sure?")
+			@model.destroy { wait: true }
+			@closeUpOption()
+
 
 		editTask: ->
 			Vent.trigger "task:edit", @model
+
+		closeUpOption: ->
+			@$el.find('.commentWrapper').slideUp()
+			@$el.find('.commentWrapper').parent().fadeOut()
+
+
 
 	});
 
