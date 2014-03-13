@@ -2,7 +2,7 @@ define [
   "jquery"
   "underscore"
   "backbone"
-  "text!templates/partials/comment.html"
+  "text!templates/partials/comment.haml"
   "handlebars"
 ], ($, _, Backbone, commentTemplate, Handlebars) ->
 

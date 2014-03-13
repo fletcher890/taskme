@@ -4,8 +4,8 @@ define [
   "backbone"
   "vent"
   "views/task"
-  "text!templates/tasks/tasks.html"
-  "text!templates/partials/filter_dropdown.html"
+  "text!templates/tasks/tasks.haml"
+  "text!templates/partials/filter_dropdown.haml"
   "handlebars"
 ], ($, _, Backbone, Vent, TaskView, tasksTemplate, filterTemplate, Handlebars) ->
 

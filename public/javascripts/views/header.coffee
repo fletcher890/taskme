@@ -2,7 +2,7 @@ define [
   "jquery"
   "underscore"
   "backbone"
-  "text!templates/header/header.html"
+  "text!templates/header/header.haml"
   "handlebars"
 ], ($, _, Backbone, headerTemplate, Handlebars) ->
 
@@ -11,7 +11,7 @@ define [
 		template: Handlebars.compile(headerTemplate)
 
 		render: ->
-			@$el.html(@template(@model.toJSON()))
+			@$el.html(@template({title: "Taskme"}))
 			@
 
 	});

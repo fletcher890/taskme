@@ -2,18 +2,13 @@
 (function() {
   define(["jquery", "underscore", "backbone", "handlebars"], function($, _, Backbone, Handlebars) {
     var DateFormats;
+    $.fn.htmlInclusive = function() {
+      return $('<div />').append($(this).clone()).html();
+    };
     DateFormats = {
       short: "DD MMMM - YYYY",
       long: "dddd DD.MM.YYYY HH:mm"
     };
-    Handlebars.registerHelper("select", function(value, options) {
-      var $el;
-      $el = $("<select />").html(options.fn(this));
-      $el.find("[value='" + value + "']").attr({
-        selected: "selected"
-      });
-      return $el.html();
-    });
     Handlebars.registerHelper("ifCond", function(v1, operator, v2, options) {
       switch (operator) {
         case "==":
@@ -67,6 +62,17 @@
         default:
           return options.inverse(this);
       }
+    });
+    Handlebars.registerHelper("select", function(value, options) {
+      var $el;
+      if (value == null) {
+        value = 'importance';
+      }
+      $el = $("<select class='form-control' name='" + value + "' id='" + value + "' />").html(options.fn(this));
+      $el.find("[value='" + value + "']").attr({
+        selected: "selected"
+      });
+      return $el.htmlInclusive();
     });
     Handlebars.registerHelper("prettifyDate", function(timestamp) {
       var curr_date, curr_hours, curr_mins, curr_month, curr_year, date;

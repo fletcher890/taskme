@@ -5,7 +5,7 @@ define [
   "vent"
   "views/comment"
   "collections/tasks"
-  "text!templates/tasks/task.html"
+  "text!templates/tasks/task.haml"
   "handlebars"
 ], ($, _, Backbone, Vent, CommentView, taskCollection, taskTemplate, Handlebars) ->
 

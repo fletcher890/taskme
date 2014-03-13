@@ -4,15 +4,16 @@ define [
   "backbone"
   "handlebars"
 ], ($, _, Backbone, Handlebars) ->
-	
+
+	$.fn.htmlInclusive = ->
+		$('<div />').append($(this).clone()).html(); 
+
 	DateFormats = {
        short: "DD MMMM - YYYY",
        long: "dddd DD.MM.YYYY HH:mm"
 	}
-	Handlebars.registerHelper "select", (value, options) ->
-	  $el = $("<select />").html(options.fn(this))
-	  $el.find("[value='" + value + "']").attr selected: "selected"
-	  $el.html()
+
+
 	  
 	Handlebars.registerHelper "ifCond", (v1, operator, v2, options) ->
 	  switch operator
@@ -35,6 +36,11 @@ define [
 	    else
 	      options.inverse this
 
+	Handlebars.registerHelper "select", (value = 'importance', options) ->
+		$el = $("<select class='form-control' name='" + value + "' id='" + value + "' />").html(options.fn(this))
+		$el.find("[value='" + value + "']").attr selected: "selected"
+		$el.htmlInclusive()
+
 	Handlebars.registerHelper "prettifyDate", (timestamp) ->
 		date = new Date(timestamp)
 		curr_year = date.getFullYear()
@@ -55,8 +61,3 @@ define [
 
 	Handlebars.registerHelper "log", (context) ->
   		return console.log(context);
-
-  	Handlebars.registerHelper "select", (value, options) ->
-		$el = $("<select class='form-control' name='importance' id='importance' />").html(options.fn(this))
-		$el.find("[value='" + value + "']").attr selected: "selected"
-		$el.html()

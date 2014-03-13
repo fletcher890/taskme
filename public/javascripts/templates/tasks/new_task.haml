@@ -1,6 +1,12 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Create Task</h3>
+    {{#if name}}
+      <h3 class="panel-title pull-left">Update Task</h3>
+      <i class="glyphicon glyphicon-remove pull-right" id="clearEditForm"></i>
+      <div class="clearfix"></div>
+    {{else}}
+      <h3 class="panel-title">Create Task</h3>
+    {{/if}}
   </div>
   <div class="panel-body">
     <form accept-charset="UTF-8" role="form">
@@ -11,22 +17,15 @@
         {{#if comments }}
         <div class="commentWrapper" style="display: block;">
           <div class="comment">
-        
-            
-            <blockquote>
-              <p>
-                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lectus nulla, scelerisque quis lacus nec, rhoncus accumsan dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus blandit ligula orci, in tincidunt sem sagittis vel. Etiam ut rutrum nisi. Sed porta dictum justo id vestibulum. Nulla quis mi congue, dictum orci vitae, lobortis nibh. 
-              </p>
-              <footer>created by<cite>John Doe</cite> at <cite>12/2/2014 13:13</cite></footer>
-            </blockquote>
-            
-            <blockquote>
-              <p>
-                This is the
-              </p>
-              <footer>created by<cite>John Doe</cite> at <cite>12/2/2014 14:18</cite></footer>
-            </blockquote>
-            
+
+            {{#each comments}}
+              <blockquote>
+                <p>
+                  {{this.comment}}
+                </p>
+                <footer>created by<cite>{{this.by}}</cite> at <cite>{{prettifyDate this.created_at}}</cite></footer>
+              </blockquote>
+            {{/each}}    
         
           </div>
           <div class="clearfix"></div>
@@ -45,7 +44,11 @@
             <option value="3">Low</option>
           {{/select}}
         </div>
-        <input class="btn btn-lg btn-success btn-block" type="submit" value="Create Task" />
+        {{#if name}}
+          <input class="btn btn-lg btn-success btn-block" type="submit" value="Update Task" />
+        {{else}}
+          <input class="btn btn-lg btn-success btn-block" type="submit" value="Create Task" />
+        {{/if}}
       </fieldset>
     </form>
   </div>

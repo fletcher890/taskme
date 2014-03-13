@@ -7,8 +7,8 @@ $(document).ready ->
 
 	toggleComments = (obj) -> 
 		if obj.hasClass "glyphicon-plus"
-			$('.commentWrapper').slideUp()
-			$('.commentWrapper').parent().find('.glyphicon-minus').removeClass('glyphicon-minus').addClass('glyphicon-plus')
+			$('.list-group-item .commentWrapper').slideUp()
+			$('.list-group-item .commentWrapper').parent().find('.glyphicon-minus').removeClass('glyphicon-minus').addClass('glyphicon-plus')
 			obj.removeClass "glyphicon-plus"
 			obj.addClass "glyphicon-minus"
 			obj.parent().find('.commentWrapper').slideDown()

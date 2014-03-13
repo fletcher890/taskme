@@ -4,7 +4,7 @@ define [
   "backbone"
   "vent"
   "validatable"
-  "text!templates/tasks/new_task.html"
+  "text!templates/tasks/new_task.haml"
   "handlebars"
 ], ($, _, Backbone, Vent, Validatable, newTaskTemplate, Handlebars) ->
 
@@ -27,6 +27,7 @@ define [
 		saveProject: (e) ->
 			e.preventDefault()
 			@model.set name: @$("#name").val()
+			
 			if @$("#comment").val() == ''
 				@model.set comments: []
 			else

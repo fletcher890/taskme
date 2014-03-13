@@ -4,13 +4,18 @@ define [
   "backbone"
   "vent"
   "views/new_task"
-  "text!templates/content/content.html"
+  "models/task"
+  "text!templates/content/content.haml"
   "handlebars"
-], ($, _, Backbone, Vent, NewTaskView, contentTemplate, Handlebars) ->
+], ($, _, Backbone, Vent, NewTaskView, TaskModel, contentTemplate, Handlebars) ->
 
 	contentView = Backbone.View.extend({
 
 		template: Handlebars.compile(contentTemplate)
+
+		events: {
+			'click #clearEditForm': 'newTask'
+		}
 
 		initialize: ->
 			@listenTo Vent, "task:edit", @editTask
@@ -37,8 +42,9 @@ define [
 
 		editTask: (model) ->
 			@swapSide(new NewTaskView({ model: model }))
-			console.log model
-			console.log "in here"
+
+		newTask: ->
+			@swapSide(new NewTaskView(model: new TaskModel()))
 
 
 	});
