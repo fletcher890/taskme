@@ -37,12 +37,12 @@
         {{/if}}
 
         <div class="form-group">
-          {{#select importance}}
+          {{#importance_select importance}}
             <option value="">Level of Importance</option>
             <option value="1">High</option>
             <option value="2">Average</option>
             <option value="3">Low</option>
-          {{/select}}
+          {{/importance_select}}
         </div>
         {{#if name}}
           <input class="btn btn-lg btn-success btn-block" type="submit" value="Update Task" />

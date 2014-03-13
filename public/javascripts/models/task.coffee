@@ -12,7 +12,6 @@ define [
 				response.id = response._id.$oid
 			else
 				response = JSON.parse(response)
-				console.log response
 				response.id = response._id.$oid
 			response
 

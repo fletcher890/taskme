@@ -27,6 +27,7 @@ define [
 		saveProject: (e) ->
 			e.preventDefault()
 			@model.set name: @$("#name").val()
+			console.log @$("#importance").val()
 			
 			if @$("#comment").val() == ''
 				@model.set comments: []
@@ -34,10 +35,11 @@ define [
 				@model.set comments: [{comment: @$("#comment").val(), by: 'John Doe', created_at: new Date() }]
 
 			@model.set importance: @$("#importance").val()
-			@model.save {wait: true},
+			@model.save null,
 				success: (model, data) =>
 					Vent.trigger "task:create", model
 					@clearForm()
+
 
 		clearForm: ->
 			@clearErrors()

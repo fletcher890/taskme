@@ -24,6 +24,7 @@
         this.model.set({
           name: this.$("#name").val()
         });
+        console.log(this.$("#importance").val());
         if (this.$("#comment").val() === '') {
           this.model.set({
             comments: []
@@ -42,9 +43,7 @@
         this.model.set({
           importance: this.$("#importance").val()
         });
-        return this.model.save({
-          wait: true
-        }, {
+        return this.model.save(null, {
           success: (function(_this) {
             return function(model, data) {
               Vent.trigger("task:create", model);

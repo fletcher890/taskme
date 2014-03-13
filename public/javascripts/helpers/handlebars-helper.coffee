@@ -41,6 +41,11 @@ define [
 		$el.find("[value='" + value + "']").attr selected: "selected"
 		$el.htmlInclusive()
 
+	Handlebars.registerHelper "importance_select", (value = 'importance', options) ->
+		$el = $("<select class='form-control' name='importance' id='importance' />").html(options.fn(this))
+		$el.find("[value='" + value + "']").attr selected: "selected"
+		$el.htmlInclusive()
+
 	Handlebars.registerHelper "prettifyDate", (timestamp) ->
 		date = new Date(timestamp)
 		curr_year = date.getFullYear()

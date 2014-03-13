@@ -74,6 +74,17 @@
       });
       return $el.htmlInclusive();
     });
+    Handlebars.registerHelper("importance_select", function(value, options) {
+      var $el;
+      if (value == null) {
+        value = 'importance';
+      }
+      $el = $("<select class='form-control' name='importance' id='importance' />").html(options.fn(this));
+      $el.find("[value='" + value + "']").attr({
+        selected: "selected"
+      });
+      return $el.htmlInclusive();
+    });
     Handlebars.registerHelper("prettifyDate", function(timestamp) {
       var curr_date, curr_hours, curr_mins, curr_month, curr_year, date;
       date = new Date(timestamp);
