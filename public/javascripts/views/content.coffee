@@ -5,7 +5,7 @@ define [
   "vent"
   "views/new_task"
   "models/task"
-  "text!templates/content/content.haml"
+  "text!templates/content/content.hbs"
   "handlebars"
 ], ($, _, Backbone, Vent, NewTaskView, TaskModel, contentTemplate, Handlebars) ->
 

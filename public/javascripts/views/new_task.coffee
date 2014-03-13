@@ -4,7 +4,7 @@ define [
   "backbone"
   "vent"
   "validatable"
-  "text!templates/tasks/new_task.haml"
+  "text!templates/tasks/new_task.hbs"
   "handlebars"
 ], ($, _, Backbone, Vent, Validatable, newTaskTemplate, Handlebars) ->
 
