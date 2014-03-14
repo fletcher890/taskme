@@ -24,6 +24,7 @@ define [
 			@listenTo Vent, "collection:add", @render
 			@on "change:filterValue", @filterByImportance, @
 			@collection.fetch({ reset: true }) 
+			@filterValue = undefined
 		
 
 		render: ->
@@ -36,8 +37,12 @@ define [
 			@
 
 		renderNewTask: (model) ->
-			@collection.fetch({ reset: true })
-			Vent.trigger "collection:add"
+			if typeof @filterValue is 'undefined'
+				@collection.fetch({ reset: true })
+				Vent.trigger "collection:add"
+			else
+				@filterByImportance()
+
 
 		renderTask: (model) ->
 			view = new TaskView({ model: model, collection: @collection })
@@ -56,6 +61,8 @@ define [
 					success: (collection) => 
 						@render()
 				})
+
+				@filterValue = undefined
 
 			else if @filterValue is 'tasks-archive'
 

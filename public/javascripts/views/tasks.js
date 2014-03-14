@@ -14,9 +14,10 @@
         this.listenTo(Vent, "task:create", this.renderNewTask);
         this.listenTo(Vent, "collection:add", this.render);
         this.on("change:filterValue", this.filterByImportance, this);
-        return this.collection.fetch({
+        this.collection.fetch({
           reset: true
         });
+        return this.filterValue = void 0;
       },
       render: function() {
         this.$el.html(this.template({
@@ -28,10 +29,14 @@
         return this;
       },
       renderNewTask: function(model) {
-        this.collection.fetch({
-          reset: true
-        });
-        return Vent.trigger("collection:add");
+        if (typeof this.filterValue === 'undefined') {
+          this.collection.fetch({
+            reset: true
+          });
+          return Vent.trigger("collection:add");
+        } else {
+          return this.filterByImportance();
+        }
       },
       renderTask: function(model) {
         var view;
@@ -50,13 +55,14 @@
       filterByImportance: function() {
         var filterValue, filtered, val;
         if (this.filterValue === 'tasks-live') {
-          return this.collection.fetch({
+          this.collection.fetch({
             success: (function(_this) {
               return function(collection) {
                 return _this.render();
               };
             })(this)
           });
+          return this.filterValue = void 0;
         } else if (this.filterValue === 'tasks-archive') {
           return this.collection.fetch({
             url: '/tasks/archive',
