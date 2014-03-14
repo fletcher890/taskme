@@ -48,11 +48,11 @@
         return this.trigger("change:filterValue");
       },
       filterByImportance: function() {
+        var filterValue, filtered, val;
         if (this.filterValue === 'tasks-live') {
           return this.collection.fetch({
             success: (function(_this) {
               return function(collection) {
-                console.log("in here");
                 return _this.render();
               };
             })(this)
@@ -67,7 +67,22 @@
             })(this)
           });
         } else {
-          return console.log("in herer");
+          this.collection.fetch({
+            silent: true
+          });
+          filterValue = this.filterValue;
+          if (filterValue === 'importance-high') {
+            val = '1';
+          } else if (filterValue === 'importance-medium') {
+            val = '2';
+          } else {
+            val = '3';
+          }
+          filtered = _.filter(this.collection.models, function(item) {
+            return item.get("importance").toLowerCase() === val;
+          });
+          this.collection.reset(filtered);
+          return this.render();
         }
       },
       createImportanceSelect: function() {

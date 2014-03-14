@@ -54,7 +54,6 @@ define [
 
 				@collection.fetch({
 					success: (collection) => 
-						console.log "in here"
 						@render()
 				})
 
@@ -67,7 +66,24 @@ define [
 				})
 
 			else
-				console.log "in herer"
+
+				@collection.fetch({ silent: true })
+
+				filterValue = @filterValue
+				
+				if filterValue is 'importance-high'
+					val = '1'
+				else if filterValue is 'importance-medium'
+					val = '2'
+				else 
+					val = '3'
+
+				filtered = _.filter(@collection.models, (item) ->
+					item.get("importance").toLowerCase() is val
+				)
+				
+				@collection.reset filtered
+				@render()
 
 		createImportanceSelect: -> 
 			$(filterTemplate)
