@@ -12,6 +12,10 @@ define [
 
 		comparator: (option) ->
 			return [option.get('sortable_place'), option.get("importance"), option.get("created_at")]
+
+		importance: (val) ->
+			return this.filter (n) ->
+				return n.get('importance') == val; 
 		
 	});
 

@@ -1,1 +1,13 @@
-<blockquote><p>{{comment.comment}}</p><footer>created by<cite>{{comment.by}}</cite> at <cite>{{prettifyDate comment.created_at}}</cite></footer></blockquote>
+  <div class="user pull-left">
+    <img alt="user" src="img/avatar-5.png">
+  </div>
+  <div class="info">
+    <div class="name">
+      <a href="#" data-original-title="">{{comment.by}}</a>
+    </div>
+    <div class="time">
+      <i class="icon-time"></i>
+      <span>{{prettifyDate comment.created_at}}</span>
+    </div>
+    <small>{{comment.comment}}</small>
+  </div>

@@ -3,6 +3,7 @@
   define(["jquery", "underscore", "backbone", "text!templates/partials/comment.hbs", "handlebars"], function($, _, Backbone, commentTemplate, Handlebars) {
     var comment;
     comment = Backbone.View.extend({
+      tagName: 'li',
       template: Handlebars.compile(commentTemplate),
       initialize: function() {
         return this.render();

@@ -8,7 +8,7 @@ require.config
     vent: "vent"
     validatable: "mixins/validatable"
     
-require ["app", 'general/ux', 'helpers/handlebars-helper'], (App, Ux) ->
+require ["app", 'general/ux', 'helpers/handlebars-helper'], (App, Ux, handlebarsHelper) ->
   
   App.initialize()
   return

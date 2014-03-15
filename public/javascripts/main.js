@@ -12,7 +12,7 @@
     }
   });
 
-  require(["app", 'general/ux', 'helpers/handlebars-helper'], function(App, Ux) {
+  require(["app", 'general/ux', 'helpers/handlebars-helper'], function(App, Ux, handlebarsHelper) {
     App.initialize();
   });
 

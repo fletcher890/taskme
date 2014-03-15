@@ -4,14 +4,30 @@
 	<div class="commentWrapper">
 		<div class="comment">
 			{{#if comments}}
-		      {{#each comments}}
-					<blockquote>
-		        <p>
-		          {{this.comment}}
-		        </p>
-		        <footer>created by<cite>{{this.by}}</cite> at <cite>{{prettifyDate this.created_at}}</cite></footer>
-		      </blockquote>
-		      {{/each}}
+		      <div class="widget">
+                <div class="widget-body">
+                  <ul class="comments">
+                    {{#each comments}}
+                      <li>
+                        <div class="user pull-left">
+                          <img alt="user" src="img/avatar-5.png">
+                        </div>
+                        <div class="info">
+                          <div class="name">
+                            <a href="#" data-original-title="">{{this.by}}</a>
+                          </div>
+                          <div class="time">
+                            <i class="icon-time"></i>
+                            <span>{{prettifyDate this.created_at}}</span>
+                          </div>
+                          <small>{{this.comment}}</small>
+                        </div>
+                      </li>
+
+                    {{/each}}    
+                  </ul>
+                </div>
+              </div>
 			{{/if}}
 		</div>
 		<hr />

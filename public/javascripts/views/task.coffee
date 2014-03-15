@@ -42,7 +42,7 @@ define [
 				success: (model) =>
 					$(e.currentTarget).parent().find('.commentTextarea').val('')
 					comm = new CommentView({ comment: comment })
-					@$el.find('.commentWrapper .comment').append(comm.render().el)
+					@$el.find('.commentWrapper .comment .comments').append(comm.render().el)
 					@$el.find('span.badge').text(@model.get('comments').length)
 
 		archiveTask: (e, value = true) ->
@@ -50,6 +50,7 @@ define [
 			@model.set archive: value
 			@model.save {wait: true},
 				success: (model) =>
+					Vent.trigger "task:archive", @model
 					@closeUpOption()
 
 		reinstateTask: (e) ->
@@ -59,6 +60,7 @@ define [
 			e.preventDefault()
 			return unless confirm("Are you sure?")
 			@model.destroy { wait: true }
+			Vent.trigger "task:destroy", @model
 			@closeUpOption()
 
 

@@ -1,4 +1,10 @@
 /* CSS REQUIRED */
+
+h1, h2, h3, h4, h5, p, span, li, ul, ol, blockquote, .btn, input, select, textarea {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: 200;
+}
+
 .state-icon {
     margin-right:5px;
 }
@@ -116,4 +122,8 @@ li.list-group-item {
 
 textarea {
 	resize:none;
+}
+
+.widget-body {
+	margin-bottom:15px;
 }

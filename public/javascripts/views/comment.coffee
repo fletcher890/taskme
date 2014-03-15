@@ -8,6 +8,8 @@ define [
 
 	comment = Backbone.View.extend({
 
+		tagName: 'li'
+
 		template: Handlebars.compile(commentTemplate)
 		
 		initialize: ->

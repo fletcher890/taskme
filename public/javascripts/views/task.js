@@ -42,7 +42,7 @@
               comm = new CommentView({
                 comment: comment
               });
-              _this.$el.find('.commentWrapper .comment').append(comm.render().el);
+              _this.$el.find('.commentWrapper .comment .comments').append(comm.render().el);
               return _this.$el.find('span.badge').text(_this.model.get('comments').length);
             };
           })(this)
@@ -61,6 +61,7 @@
         }, {
           success: (function(_this) {
             return function(model) {
+              Vent.trigger("task:archive", _this.model);
               return _this.closeUpOption();
             };
           })(this)
@@ -77,6 +78,7 @@
         this.model.destroy({
           wait: true
         });
+        Vent.trigger("task:destroy", this.model);
         return this.closeUpOption();
       },
       editTask: function() {
