@@ -3,6 +3,7 @@
   require.config({
     paths: {
       jquery: "vendor/jquery/dist/jquery",
+      jqueryui: "http://code.jquery.com/ui/1.10.4/jquery-ui",
       underscore: "vendor/underscore/underscore",
       backbone: "vendor/backbone/backbone",
       handlebars: "vendor/handlebars/handlebars",
@@ -11,7 +12,7 @@
     }
   });
 
-  require(["app", 'general/ux', 'helpers/handlebars-helper'], function(App, Ux, handlebarsHelper) {
+  require(["app", 'general/ux', 'helpers/handlebars-helper'], function(App, Ux) {
     App.initialize();
   });
 

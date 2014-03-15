@@ -11,7 +11,7 @@ define [
 		url: "/tasks"
 
 		comparator: (option) ->
-			return option.get('importance')
+			return [option.get('sortable_place'), option.get("importance"), option.get("created_at")]
 		
 	});
 

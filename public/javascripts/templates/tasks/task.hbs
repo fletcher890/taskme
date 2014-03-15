@@ -22,13 +22,18 @@
 		<hr>
 		<div class="btn-group btn-group-justified">
 			{{#unless archive}}
-			<div class="btn-group">
-				<button class="btn btn-lg btn-default btn-sm editTask"><i class="glyphicon glyphicon-pencil"></i>&nbsp; Edit</button>
-			</div>
-			<div class="btn-group">
-				<button class="btn btn-lg btn-default btn-sm archiveTask"><i class="glyphicon glyphicon-folder-close"></i>&nbsp; Archive Task</button>
-			</div>
+				<div class="btn-group">
+					<button class="btn btn-lg btn-default btn-sm editTask"><i class="glyphicon glyphicon-pencil"></i>&nbsp; Edit</button>
+				</div>
+				<div class="btn-group">
+					<button class="btn btn-lg btn-default btn-sm archiveTask"><i class="glyphicon glyphicon-folder-close"></i>&nbsp; Archive Task</button>
+				</div>
 			{{/unless}}
+			{{#if archive}}
+				<div class="btn-group">
+					<button class="btn btn-lg btn-default btn-sm reinstateTask"><i class="glyphicon glyphicon-folder-open"></i>&nbsp; Reinstate Task</button>
+				</div>
+			{{/if}}
 			<div class="btn-group">
 				<button class="btn btn-lg btn-danger btn-sm removeTask"><i class="glyphicon glyphicon-trash"></i>&nbsp; Remove Task</button>
 			</div>

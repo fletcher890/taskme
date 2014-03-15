@@ -21,6 +21,8 @@ define [
 			'click .btn.editTask': 'editTask'
 			'click .btn.archiveTask': 'archiveTask'
 			'click .btn.removeTask': 'removeTask'
+			'click .btn.reinstateTask': 'reinstateTask'
+			'drop': 'drop'
 		}
 
 		template: Handlebars.compile(taskTemplate)
@@ -43,12 +45,15 @@ define [
 					@$el.find('.commentWrapper .comment').append(comm.render().el)
 					@$el.find('span.badge').text(@model.get('comments').length)
 
-		archiveTask: (e) ->
+		archiveTask: (e, value = true) ->
 			e.preventDefault()
-			@model.set archive: true
+			@model.set archive: value
 			@model.save {wait: true},
 				success: (model) =>
 					@closeUpOption()
+
+		reinstateTask: (e) ->
+			@archiveTask e, false
 
 		removeTask: (e) ->
 			e.preventDefault()
@@ -60,11 +65,13 @@ define [
 		editTask: ->
 			Vent.trigger "task:edit", @model
 
+
+		drop: (event, index) ->
+			Vent.trigger "drop:sort", event, @model, index
+
 		closeUpOption: ->
 			@$el.find('.commentWrapper').slideUp()
 			@$el.find('.commentWrapper').parent().fadeOut()
-
-
 
 	});
 

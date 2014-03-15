@@ -8,14 +8,18 @@
     return toggleComments = function(obj) {
       if (obj.hasClass("glyphicon-plus")) {
         $('.list-group-item .commentWrapper').slideUp();
+        $('.list-group-item').css('cursor', 'move');
+        $('.list-group-item .commentWrapper').slideUp();
         $('.list-group-item .commentWrapper').parent().find('.glyphicon-minus').removeClass('glyphicon-minus').addClass('glyphicon-plus');
         obj.removeClass("glyphicon-plus");
         obj.addClass("glyphicon-minus");
-        return obj.parent().find('.commentWrapper').slideDown();
+        obj.parent().find('.commentWrapper').slideDown();
+        return obj.parent().css('cursor', 'default');
       } else {
         obj.removeClass("glyphicon-minus");
         obj.addClass("glyphicon-plus");
-        return obj.parent().find('.commentWrapper').slideUp();
+        obj.parent().find('.commentWrapper').slideUp();
+        return obj.parent().css('cursor', 'move');
       }
     };
   });

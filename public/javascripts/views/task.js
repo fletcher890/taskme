@@ -10,7 +10,9 @@
         'click .btn.commentAdd': 'addComment',
         'click .btn.editTask': 'editTask',
         'click .btn.archiveTask': 'archiveTask',
-        'click .btn.removeTask': 'removeTask'
+        'click .btn.removeTask': 'removeTask',
+        'click .btn.reinstateTask': 'reinstateTask',
+        'drop': 'drop'
       },
       template: Handlebars.compile(taskTemplate),
       render: function() {
@@ -46,10 +48,13 @@
           })(this)
         });
       },
-      archiveTask: function(e) {
+      archiveTask: function(e, value) {
+        if (value == null) {
+          value = true;
+        }
         e.preventDefault();
         this.model.set({
-          archive: true
+          archive: value
         });
         return this.model.save({
           wait: true
@@ -60,6 +65,9 @@
             };
           })(this)
         });
+      },
+      reinstateTask: function(e) {
+        return this.archiveTask(e, false);
       },
       removeTask: function(e) {
         e.preventDefault();
@@ -73,6 +81,9 @@
       },
       editTask: function() {
         return Vent.trigger("task:edit", this.model);
+      },
+      drop: function(event, index) {
+        return Vent.trigger("drop:sort", event, this.model, index);
       },
       closeUpOption: function() {
         this.$el.find('.commentWrapper').slideUp();

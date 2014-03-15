@@ -95,7 +95,7 @@ blockquote {
 }
 
 .e {
-	min-height: 342px;
+	min-height: 328px;
 }
 
 #sidebar {
@@ -108,4 +108,12 @@ blockquote {
 
 #filterablearea {
 	margin-bottom:40px;
+}
+
+li.list-group-item {
+	cursor: move;
+}
+
+textarea {
+	resize:none;
 }

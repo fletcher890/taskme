@@ -4,9 +4,10 @@ define [
   "backbone"
   "vent"
   "validatable"
+  "collections/tasks"
   "text!templates/tasks/new_task.hbs"
   "handlebars"
-], ($, _, Backbone, Vent, Validatable, newTaskTemplate, Handlebars) ->
+], ($, _, Backbone, Vent, Validatable, TasksCollection, newTaskTemplate, Handlebars) ->
 
 	newTaskView = Backbone.View.extend({
 		initialize: ->
@@ -36,11 +37,25 @@ define [
 					@model.set comments: [{comment: @$("#comment").val(), by: 'John Doe', created_at: new Date() }]
 
 			@model.set importance: @$("#importance").val()
-			@model.save null,
-				success: (model, data) =>
-					Vent.trigger "task:create", model
-					@clearForm()
 
+			if @model.isNew()
+				
+				collection = new TasksCollection()
+				collection = collection.fetch({
+					success: (collection) =>
+						@model.set sortable_place: collection.length
+						@model.save {wait: true},
+						success: (model, data) =>
+							Vent.trigger "task:create", model
+							@clearForm()
+				});
+
+			else
+				
+				@model.save {wait: true},
+					success: (model, data) =>
+						Vent.trigger "task:create", model
+						@clearForm()	
 
 		clearForm: ->
 			@clearErrors()
