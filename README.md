@@ -14,7 +14,7 @@ Templating/Sugar:
 
 To see the app in action - <a href="http://workr.herokuapp.com/" target="_blank" title="Workr Demo">Demo</a>
 
-## Want your own Workr app?
+### Want your own Workr app?
 
 Installation is really simple just follow the steps below to get started.
 
