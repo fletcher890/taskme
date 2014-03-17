@@ -3,6 +3,7 @@ require 'sinatra'
 require 'haml'
 require 'mongo'
 require 'json/ext'
+require 'uri'
 
 
 include Mongo
@@ -17,9 +18,17 @@ module Mongoid
   end
 end
 
+def get_connection
+  return @db_connection if @db_connection
+  db = URI.parse(ENV['MONGOHQ_URL'])
+  db_name = db.path.gsub(/^\//, '')
+  @db_connection = Mongo::Connection.new(db.host, db.port).db(db_name)
+  @db_connection.authenticate(db.user, db.password) unless (db.user.nil? || db.user.nil?)
+  @db_connection
+end
 
 configure do
-  conn = MongoClient.new("localhost", 27017)
+  conn = get_connection()
   set :mongo_connection, conn
   set :mongo_db, conn.db('tasks')
 end
@@ -81,6 +90,3 @@ delete '/tasks/:id' do
   {:success => true}.to_json
 end
 
-get '/clear' do 
-	settings.mongo_db['tasks'].remove()
-end
