@@ -1,11 +1,13 @@
 <div class="e">
-	{{#if collection.length}}
 	  <div class="panel panel-default">
 	    <div class="panel-heading">
 	      <h3 class="panel-title">Tasks</h3>
 	    </div>
 	  </div>
-	  <ul class="list-group checked-list-box ui-sortable" id="taskList"></ul>
-	{{/if}}
+	  <ul class="list-group checked-list-box ui-sortable" id="taskList">
+		{{#unless collection.length}}
+		<li class="list-group-item noTasks">No Tasks!</li>
+		{{/unless}}
+	  </ul>
 </div>
 <div class="btn-group" id="filterablearea"></div>

@@ -5,6 +5,10 @@
     %link(rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
     %link(rel="stylesheet" href="stylesheets/main.css")
     %link(rel="stylesheet" href="stylesheets/style.css")
+    %script(src="javascripts/vendor/jquery/dist/jquery.js")
+    %script(src="javascripts/general/jquery.ui.touch-punch.min.js")
+    %script(src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
+    %script(src="javascripts/general/checkbox.js")
   %body
     #wrapper
       .container
@@ -17,9 +21,6 @@
       #footer
         .container
   
-  %script(src="javascripts/vendor/jquery/dist/jquery.js")
-  %script(src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
-  %script(src="javascripts/general/checkbox.js")
   %script(type="text/javascript" src="javascripts/vendor/require.js" data-main="javascripts/main")
   %script
     require.config({ urlArgs: "v=" +  (new Date()).getTime() });

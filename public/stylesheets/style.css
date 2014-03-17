@@ -127,3 +127,7 @@ textarea {
 .widget-body {
 	margin-bottom:15px;
 }
+
+li.noTasks {
+	text-align: center;
+}
