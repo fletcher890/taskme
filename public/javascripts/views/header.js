@@ -19,7 +19,7 @@
       },
       render: function() {
         this.$el.html(this.template({
-          title: "Taskme",
+          title: "Workr",
           high: this.coll.importance('1').length,
           medium: this.coll.importance('2').length,
           low: this.coll.importance('3').length

@@ -22,7 +22,7 @@ define [
 			@listenTo Vent, 'task:destroy', @importanceCount
 
 		render: ->
-			@$el.html(@template({title: "Taskme", high: @coll.importance('1').length, medium: @coll.importance('2').length, low: @coll.importance('3').length}))
+			@$el.html(@template({title: "Workr", high: @coll.importance('1').length, medium: @coll.importance('2').length, low: @coll.importance('3').length}))
 			@
 
 		importanceCount: ->
