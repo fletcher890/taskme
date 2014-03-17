@@ -1,6 +1,7 @@
 define [
   "jquery"
   "jqueryui"
+  "jqueryuipunch"
   "underscore"
   "backbone"
   "vent"
@@ -9,7 +10,7 @@ define [
   "text!templates/tasks/tasks.hbs"
   "text!templates/partials/filter_dropdown.hbs"
   "handlebars"
-], ($, $ui, _, Backbone, Vent, TaskView, TasksCollection, tasksTemplate, filterTemplate, Handlebars) ->
+], ($, $ui, $punch, _, Backbone, Vent, TaskView, TasksCollection, tasksTemplate, filterTemplate, Handlebars) ->
 
 	tasks = Backbone.View.extend({
 
