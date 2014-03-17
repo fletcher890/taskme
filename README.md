@@ -20,6 +20,6 @@ Installation is really simple just follow the steps below to get started.
 
 1. clone the resposity https://github.com/fletcher890/workr.git
 2. run `bundle install`
-3. Start the MongoDB Server
+3. start the MongoDB server
 4. run `ruby myapp.rb`
 5. visit localhost:4567 (for localhost server)
