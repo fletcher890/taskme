@@ -1,12 +1,25 @@
-# Taskme
+# Workr
 
-This is a simple task tracking app built again built from the group up with Test-Driven Development. The app uses the following:-
+This is a simple task tracking app built using backbone. The app uses the following:-
 
 * Backbone
 * Sinatra
+* MongoDB
 * Require
 
 Templating/Sugar:
 
 * Handlebars
 * CoffeeScript 
+
+To see the app in action - <a href="http://workr.herokuapp.com/" target="_blank" title="Workr Demo">Demo</a>
+
+## Want your own Workr app?
+
+Installation is really simple just follow the steps below to get started.
+
+1. clone the resposity https://github.com/fletcher890/workr.git
+2. run `bundle install`
+3. Start the MongoDB Server
+4. run `ruby myapp.rb`
+5. visit localhost:4567 (for localhost server)
