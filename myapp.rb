@@ -27,10 +27,9 @@ def get_connection
   @db_connection
 end
 
+
 configure do
-  conn = get_connection()
-  set :mongo_connection, conn
-  set :mongo_db, conn.db('tasks')
+  set :mongo_db, get_connection()
 end
 
 get '/collections/?' do
@@ -90,3 +89,6 @@ delete '/tasks/:id' do
   {:success => true}.to_json
 end
 
+get '/clear' do 
+	settings.mongo_db['tasks'].remove()
+end
