@@ -133,5 +133,5 @@ li.noTasks {
 }
 
 * {
-	/*-webkit-appearance: none;*/
+	box-shadow: none;
 }
