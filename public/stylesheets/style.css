@@ -132,6 +132,6 @@ li.noTasks {
 	text-align: center;
 }
 
-* {
-	box-shadow: none;
+input, textarea {
+	-webkit-appearance: none;
 }
