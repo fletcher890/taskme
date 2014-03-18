@@ -3,9 +3,10 @@ define [
   "underscore"
   "backbone"
   "vent"
+  "views/comment"
   "text!templates/tasks/task.hbs"
   "handlebars"
-], ($, _, Backbone, Vent, taskTemplate, Handlebars) ->
+], ($, _, Backbone, Vent, CommentView, taskTemplate, Handlebars) ->
 
 	task = Backbone.View.extend({
 
@@ -31,18 +32,18 @@ define [
 			@
 
 		addComment: (e) ->
-			require ["views/comment"], (CommentView) ->
-				e.preventDefault()
-				comments = @model.get('comments');
-				comment = {comment: $(e.currentTarget).parent().find('.commentTextarea').val(), by: 'John Doe', created_at: new Date() }
-				comments.push(comment);
-				@model.set comments: comments 
-				@model.save {wait: true},
-					success: (model) =>
-						$(e.currentTarget).parent().find('.commentTextarea').val('')
-						comm = new CommentView({ comment: comment })
-						@$el.find('.commentWrapper .comment .comments').append(comm.render().el)
-						@$el.find('span.badge').text(@model.get('comments').length)
+			console.log "123123"
+			e.preventDefault()
+			comments = @model.get('comments');
+			comment = {comment: $(e.currentTarget).parent().find('.commentTextarea').val(), by: 'John Doe', created_at: new Date() }
+			comments.push(comment);
+			@model.set comments: comments 
+			@model.save {wait: true},
+				success: (model) =>
+					$(e.currentTarget).parent().find('.commentTextarea').val('')
+					comm = new CommentView({ comment: comment })
+					@$el.find('.commentWrapper .comment .comments').append(comm.render().el)
+					@$el.find('span.badge').text(@model.get('comments').length)
 
 		archiveTask: (e, value = true) ->
 			e.preventDefault()

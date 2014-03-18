@@ -135,3 +135,12 @@ li.noTasks {
 input, textarea {
 	-webkit-appearance: none;
 }
+
+.draggableArea {
+	background-image: url("../img/hatchBg.png");
+    cursor: ns-resize;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 20px;
+}
