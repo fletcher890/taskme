@@ -4,13 +4,14 @@ require 'haml'
 require 'mongo'
 require 'json/ext'
 require 'uri'
+require 'uri'
 
 
 include Mongo
 
 def get_connection
   return @db_connection if @db_connection
-  db = URI.parse(ENV['MONGOHQ_URL'])
+  db = URI.parse("mongodb://username:password@hostname/database")
   db_name = db.path.gsub(/^\//, '')
   @db_connection = Mongo::Connection.new(db.host, db.port).db(db_name)
   @db_connection.authenticate(db.user, db.password) unless (db.user.nil? || db.user.nil?)

@@ -12,7 +12,7 @@ Templating/Sugar:
 * Handlebars
 * CoffeeScript 
 
-To see the app in action - <a href="http://workr.herokuapp.com/" target="_blank" title="Workr Demo">Demo</a>
+To see the app in action - <a href="http://workr.fletcher-simon.co.uk/" target="_blank" title="Workr Demo">http://workr.fletcher-simon.co.uk/</a>
 
 ### Want your own Workr app?
 
